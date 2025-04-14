@@ -1,0 +1,65 @@
+.glowing-orb {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: pulse 4s infinite ease-in-out;
+    z-index: 0;
+}
+
+.orb-core {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 40%;
+    left: 40%;
+    border-radius: 50%;
+    filter: blur(3px);
+    animation: core-pulse 4s infinite alternate ease-in-out;
+}
+
+.top-right {
+    top: 15%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.bottom-left {
+    bottom: 15%;
+    left: 20%;
+    animation-delay: 0.5s;
+}
+
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.2;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+}
+
+@keyframes core-pulse {
+    0% {
+        filter: blur(2px);
+        opacity: 0.7;
+    }
+    100% {
+        filter: blur(4px);
+        opacity: 1;
+    }
+} 
