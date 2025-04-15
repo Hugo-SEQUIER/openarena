@@ -345,4 +345,414 @@
     .search-icon {
         left: 12px;
     }
+}
+
+/* Challenge List */
+.challenges-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.challenge-list-item {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(58, 46, 39, 0.1);
+    box-shadow: 0 4px 16px rgba(58, 46, 39, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.challenge-list-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(58, 46, 39, 0.1);
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.challenge-list-content {
+    flex: 1;
+    padding-right: 1.5rem;
+}
+
+.challenge-list-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #3A2E27;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-list-description {
+    color: rgba(58, 46, 39, 0.8);
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+}
+
+.challenge-list-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: rgba(58, 46, 39, 0.7);
+    font-size: 0.9rem;
+}
+
+.challenge-time-badge {
+    background: rgba(58, 46, 39, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.challenge-time-badge span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3A2E27;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.challenge-time-badge small {
+    font-size: 0.8rem;
+    color: rgba(58, 46, 39, 0.7);
+    margin-top: 0.2rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.challenge-modal {
+    background-color: #f5f3f0;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #3A2E27;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.modal-close-btn:hover {
+    opacity: 1;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3A2E27;
+    margin-bottom: 1rem;
+    padding-right: 1.5rem;
+}
+
+.modal-description {
+    color: rgba(58, 46, 39, 0.8);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.modal-time-remaining {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(58, 46, 39, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-time-remaining span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3A2E27;
+}
+
+.modal-time-remaining small {
+    font-size: 0.8rem;
+    color: rgba(58, 46, 39, 0.7);
+}
+
+.modal-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(58, 46, 39, 0.1);
+}
+
+.modal-stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.modal-stat-label {
+    font-size: 0.9rem;
+    color: rgba(58, 46, 39, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.modal-stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3A2E27;
+}
+
+.modal-section {
+    margin-bottom: 2rem;
+}
+
+.modal-section-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #3A2E27;
+    margin-bottom: 1rem;
+}
+
+.modal-dataset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(58, 46, 39, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.modal-dataset h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #3A2E27;
+    margin-bottom: 0.5rem;
+}
+
+.modal-dataset p {
+    color: rgba(58, 46, 39, 0.8);
+    font-size: 0.95rem;
+}
+
+.modal-leaderboard {
+    background: rgba(58, 46, 39, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.leaderboard-header {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    padding: 1rem 1.5rem;
+    background: rgba(58, 46, 39, 0.1);
+    font-weight: 600;
+    color: rgba(58, 46, 39, 0.9);
+}
+
+.leaderboard-row {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(58, 46, 39, 0.05);
+}
+
+.leaderboard-row:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-rank {
+    text-align: center;
+}
+
+.leaderboard-rank, .leaderboard-user, .leaderboard-score {
+    color: #3A2E27;
+}
+
+.leaderboard-score {
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Make the first three ranks special */
+.leaderboard-row:nth-child(1) .leaderboard-rank {
+    color: #C9A87C;
+    font-weight: 700;
+}
+
+.leaderboard-row:nth-child(2) .leaderboard-rank {
+    color: #A5A5A5;
+    font-weight: 700;
+}
+
+.leaderboard-row:nth-child(3) .leaderboard-rank {
+    color: #A97142;
+    font-weight: 700;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #3A2E27;
+    border: 1px solid rgba(58, 46, 39, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(58, 46, 39, 0.1);
+    border-color: rgba(58, 46, 39, 0.5);
+}
+
+@media (max-width: 768px) {
+    .challenge-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .challenge-list-content {
+        padding-right: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    .challenge-time-badge {
+        align-self: flex-end;
+    }
+    
+    .challenge-list-meta {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .modal-stats {
+        flex-wrap: wrap;
+    }
+    
+    .modal-stat-item {
+        flex: 0 0 calc(50% - 0.5rem);
+        margin-bottom: 1rem;
+    }
+    
+    .modal-dataset {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .modal-dataset button {
+        margin-top: 1rem;
+        align-self: flex-end;
+    }
+}
+
+/* Submission Guidelines */
+.submission-guidelines {
+    background: rgba(58, 46, 39, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.guidelines-intro {
+    color: rgba(58, 46, 39, 0.8);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.guidelines-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.guideline-item {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.guideline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #3A2E27;
+    border-radius: 50%;
+}
+
+.guideline-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3A2E27;
+    margin-bottom: 0.3rem;
+}
+
+.guideline-description {
+    font-size: 0.9rem;
+    color: rgba(58, 46, 39, 0.8);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .submission-guidelines {
+        padding: 1.25rem;
+    }
+    
+    .guidelines-intro {
+        font-size: 0.9rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .guidelines-list {
+        gap: 1rem;
+    }
+    
+    .guideline-title {
+        font-size: 0.95rem;
+    }
+    
+    .guideline-description {
+        font-size: 0.85rem;
+    }
 } 

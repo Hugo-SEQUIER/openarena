@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ChallengesPage.css';
 import MinimalistTextureBackground from '../components/StarfieldBackground';
-import ChallengeCard from '../components/ChallengeCard';
 import { mockChallenges, Challenge } from '../data/mockChallenges';
 
 const ChallengesPage: React.FC = () => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
+    const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
+    const [showModal, setShowModal] = useState(false);
 
     const handleLogoClick = () => {
         navigate('/');
@@ -15,6 +16,15 @@ const ChallengesPage: React.FC = () => {
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);
+    };
+
+    const openChallengeDetails = (challenge: Challenge) => {
+        setSelectedChallenge(challenge);
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     const filteredChallenges = mockChallenges.filter(challenge => 
@@ -69,20 +79,33 @@ const ChallengesPage: React.FC = () => {
                     </div>
                 </div>
                 
-                <div className="challenges-container">
+                <div className="challenges-list">
                     {filteredChallenges.length > 0 ? (
                         filteredChallenges.map(challenge => (
-                            <div key={challenge.id} className="challenge-card-wrapper">
-                                <ChallengeCard
-                                    title={challenge.title}
-                                    timeRemaining={challenge.timeRemaining}
-                                    submissions={challenge.submissions}
-                                    metric={challenge.metric}
-                                    deadline={challenge.deadline}
-                                    datasetTitle={challenge.datasetTitle}
-                                    datasetDescription={challenge.datasetDescription}
-                                    leaderboard={challenge.leaderboard}
-                                />
+                            <div 
+                                key={challenge.id} 
+                                className="challenge-list-item"
+                                onClick={() => openChallengeDetails(challenge)}
+                            >
+                                <div className="challenge-list-content">
+                                    <h3 className="challenge-list-title">{challenge.title}</h3>
+                                    <p className="challenge-list-description">{challenge.description}</p>
+                                    <div className="challenge-list-meta">
+                                        <span className="challenge-metric">
+                                            <strong>Metric:</strong> {challenge.metric}
+                                        </span>
+                                        <span className="challenge-deadline">
+                                            <strong>Deadline:</strong> {challenge.deadline}
+                                        </span>
+                                        <span className="challenge-submissions">
+                                            <strong>Submissions:</strong> {challenge.submissions}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="challenge-time-badge">
+                                    <span>{challenge.timeRemaining}</span>
+                                    <small>remaining</small>
+                                </div>
                             </div>
                         ))
                     ) : (
@@ -92,6 +115,87 @@ const ChallengesPage: React.FC = () => {
                     )}
                 </div>
             </div>
+            
+            {showModal && selectedChallenge && (
+                <div className="modal-overlay" onClick={closeModal}>
+                    <div className="challenge-modal" onClick={e => e.stopPropagation()}>
+                        <button className="modal-close-btn" onClick={closeModal}>×</button>
+                        <h2 className="modal-title">{selectedChallenge.title}</h2>
+                        <div className="modal-time-remaining">
+                            <span>{selectedChallenge.timeRemaining}</span>
+                            <small>remaining</small>
+                        </div>
+                        
+                        <p className="modal-description">{selectedChallenge.description}</p>
+                        
+                        <div className="modal-stats">
+                            <div className="modal-stat-item">
+                                <div className="modal-stat-label">Submissions</div>
+                                <div className="modal-stat-value">{selectedChallenge.submissions}</div>
+                            </div>
+                            <div className="modal-stat-item">
+                                <div className="modal-stat-label">Metric</div>
+                                <div className="modal-stat-value">{selectedChallenge.metric}</div>
+                            </div>
+                            <div className="modal-stat-item">
+                                <div className="modal-stat-label">Deadline</div>
+                                <div className="modal-stat-value">{selectedChallenge.deadline}</div>
+                            </div>
+                        </div>
+                        
+                        <div className="modal-section">
+                            <h3 className="modal-section-title">Dataset</h3>
+                            <div className="modal-dataset">
+                                <div>
+                                    <h4>{selectedChallenge.datasetTitle}</h4>
+                                    <p>{selectedChallenge.datasetDescription}</p>
+                                </div>
+                                <button className="btn btn-secondary">Download</button>
+                            </div>
+                        </div>
+                        
+                        <div className="modal-section">
+                            <h3 className="modal-section-title">Leaderboard</h3>
+                            <div className="modal-leaderboard">
+                                <div className="leaderboard-header">
+                                    <span>Rank</span>
+                                    <span>User</span>
+                                    <span>Score</span>
+                                </div>
+                                {selectedChallenge.leaderboard.map(entry => (
+                                    <div key={entry.rank} className="leaderboard-row">
+                                        <span className="leaderboard-rank">{entry.rank}</span>
+                                        <span className="leaderboard-user">{entry.user}</span>
+                                        <span className="leaderboard-score">{entry.score}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="modal-section">
+                            <h3 className="modal-section-title">Submission Guidelines</h3>
+                            <div className="submission-guidelines">
+                                <p className="guidelines-intro">
+                                    Your submission will be evaluated based on the following criteria. Please ensure your 
+                                    submission includes all required components:
+                                </p>
+                                <ul className="guidelines-list">
+                                    {selectedChallenge.submissionGuidelines.map((guideline, index) => (
+                                        <li key={index} className="guideline-item">
+                                            <h4 className="guideline-title">{guideline.title}</h4>
+                                            <p className="guideline-description">{guideline.description}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div className="modal-actions">
+                            <button className="btn btn-primary">Start Challenge</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
