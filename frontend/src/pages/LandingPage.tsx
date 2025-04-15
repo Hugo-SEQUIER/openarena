@@ -1,9 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/LandingPage.css';
 import MinimalistTextureBackground from '../components/StarfieldBackground';
 import ChallengeCard from 'components/ChallengeCard';
 
 const LandingPage: React.FC = () => {
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate('/challenges');
+    };
+
+    const handleLogoClick = () => {
+        navigate('/');
+    };
+
     return (
         <div className="landing-page">
             <div className="background-elements">
@@ -14,7 +25,7 @@ const LandingPage: React.FC = () => {
             </div>
             
             <div className="header">
-                <div className="logo">
+                <div className="logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
                     <div className="logo-image">
                         <img src="/logoOpenArena.png" alt="OpenArena logo" />
                     </div>
@@ -34,7 +45,7 @@ const LandingPage: React.FC = () => {
                     <p>Launch AI competitions on a decentralized platform. Publish datasets, create challenges, and track submissions transparently.</p>
                     
                     <div className="cta-buttons">
-                        <button className="btn btn-primary">Get Started</button>
+                        <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
                     </div>
                 </div>
                 
