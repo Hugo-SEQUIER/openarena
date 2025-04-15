@@ -7,11 +7,8 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    background-color: #050314;
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(67, 97, 238, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(114, 9, 183, 0.15) 0%, transparent 50%);
-    color: white;
+    background-color: #D1CDC2;
+    color: #3A2E27;
     padding: 0 24px;
 }
 
@@ -29,7 +26,7 @@
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.15;
+    opacity: 0.05;
 }
 
 .top-left {
@@ -37,7 +34,7 @@
     height: 50vw;
     top: -20%;
     left: -15%;
-    background: radial-gradient(circle, #4361ee 0%, #3a0ca3 100%);
+    background: radial-gradient(circle, #C0BCB2 0%, #ADA99F 100%);
     animation: pulse 15s infinite alternate ease-in-out;
 }
 
@@ -46,7 +43,7 @@
     height: 60vw;
     bottom: -25%;
     right: -15%;
-    background: radial-gradient(circle, #7209b7 0%, #3f37c9 100%);
+    background: radial-gradient(circle, #E2DED3 0%, #C8C4BA 100%);
     animation: pulse 20s infinite alternate-reverse ease-in-out;
 }
 
@@ -57,10 +54,10 @@
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.07) 1px, transparent 1px);
+        linear-gradient(rgba(58, 46, 39, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58, 46, 39, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
-    opacity: 0.3;
+    opacity: 0.6;
     background-position: center center;
     transform-origin: center;
     animation: grid-rotate 120s linear infinite;
@@ -132,12 +129,10 @@
 
 .logo-text {
     font-size: 24px;
-    background: linear-gradient(45deg, #ffffff, #e2e8f0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #3A2E27;
     letter-spacing: 0.5px;
     margin-top: 2px;
+    font-weight: 700;
 }
 
 /* Content */
@@ -162,15 +157,13 @@
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.1;
-    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    color: #3A2E27;
 }
 
 .gradient-text {
-    background: linear-gradient(45deg, white, #e2e8f0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #3A2E27;
     display: inline-block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .hero-section p {
@@ -198,26 +191,26 @@
 }
 
 .btn-primary {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #050314;
+    background-color: #3A2E27;
+    color: #D1CDC2;
     border: none;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(58, 46, 39, 0.2);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(255, 255, 255, 0.3);
-    background-color: white;
+    box-shadow: 0 10px 24px rgba(58, 46, 39, 0.3);
+    background-color: #2A1F19;
 }
 
 .btn-secondary {
     background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #3A2E27;
+    border: 2px solid rgba(58, 46, 39, 0.2);
 }
 
 .btn-secondary:hover {
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(58, 46, 39, 0.5);
     transform: translateY(-2px);
 }
 

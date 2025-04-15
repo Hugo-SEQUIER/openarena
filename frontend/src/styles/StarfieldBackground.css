@@ -1,4 +1,4 @@
-.starfield-canvas {
+.texture-canvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,5 +6,5 @@
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 1;
 } 

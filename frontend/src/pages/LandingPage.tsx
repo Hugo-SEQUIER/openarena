@@ -1,22 +1,16 @@
 import React from 'react';
 import '../styles/LandingPage.css';
-import GlowingOrb from '../components/GlowingOrb';
+import MinimalistTextureBackground from '../components/StarfieldBackground';
 import ChallengeCard from 'components/ChallengeCard';
-import StarfieldBackground from '../components/StarfieldBackground';
-import CosmicDust from '../components/CosmicDust';
 
 const LandingPage: React.FC = () => {
     return (
         <div className="landing-page">
             <div className="background-elements">
-                <StarfieldBackground />
-                <CosmicDust />
+                <MinimalistTextureBackground />
                 <div className="gradient-circle top-left"></div>
                 <div className="gradient-circle bottom-right"></div>
                 <div className="grid-lines"></div>
-                <GlowingOrb position="top-right" size={120} color="rgba(67, 97, 238, 0.6)" />
-                <GlowingOrb position="bottom-left" size={150} color="rgba(114, 9, 183, 0.6)" />
-                <GlowingOrb position="center" size={300} color="rgba(76, 201, 240, 0.2)" />
             </div>
             
             <div className="header">
